@@ -1,4 +1,4 @@
-# Stock-Price Prediction Using LSTM
+# Machine Learning Project
 ```
 ```
 
