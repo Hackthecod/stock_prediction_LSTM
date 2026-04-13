@@ -17,5 +17,3 @@ with st.expander('Data'):
     st.write('**X**')
     y = df['species']
     y
-
-    st.scatter_chart(X)
