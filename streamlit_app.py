@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+from sklearn.ensemble import RandomForestClassifier
 
 st.title('🤖 ML Project')
 
@@ -69,3 +70,12 @@ with st.expander('Data Preparation'):
     input_row
     st.write('**Encoded y**')
     y
+
+# Model Building
+clf = RandomForestClassifier()
+clf.fit(X_row, y)
+
+# Apply the train Model
+prediction = clf.predict(input_row)
+prediction_prob = clf.prediction_prob(input_row)
+prediction_prob
