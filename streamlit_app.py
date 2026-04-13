@@ -6,5 +6,7 @@ st.title('🤖 Stock Price Prediction')
 
 st.info('This is Machine Learning App')
 
-df = pd.read_csv(r'https://raw.githubusercontent.com/Hackthecod/stock_prediction_LSTM/refs/heads/master/penguins_cleaned.csv')
-df
+with st.expander('Data'):
+  st.write("Raw Data")
+  df = pd.read_csv(r'https://raw.githubusercontent.com/Hackthecod/stock_prediction_LSTM/refs/heads/master/penguins_cleaned.csv')
+  df
