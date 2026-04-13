@@ -6,7 +6,7 @@ This ia an machine learning app.
 
 ## Demo App
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://machine-learning--project.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://penguin-species--prediction.streamlit.app/)
 
 ## GitHub Codespaces
 
