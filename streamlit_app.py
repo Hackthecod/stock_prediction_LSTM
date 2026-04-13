@@ -26,10 +26,32 @@ with st.expander('Data Visualization '):
 with st.sidebar:
     st.header('Input Features')
     island = st.selectbox('Island',('Biscoe','Dream','Torgersen'))
-    gender = st.selectbox('Gender',('Female','Male'))
     bill_length_mm = st.slider('Bill Length(mm)', 32.1, 59.6, 43.9)
     bill_depth_mm = st.slider('Bill Depth (mm)', 13.1, 21.5, 17.2)
     flipper_length_mm = st.slider('Flipper Length (mm)', 172.0, 231.0, 201.0)
     body_mass_g = st.slider('Body Mass (g)', 2700.0, 6300.0, 4207.0)
+    gender = st.selectbox('Gender',('Female','Male'))
+
 
 # Create a dataframe for the input features
+    data = {'island':island,
+           'bill_length_mm':bill_length_mm,
+           'bill_depth_mm':bill_depth_mm,
+           'flipper_length':flipper_length,
+           'body_mass_g':body_mass_g,
+           'sex':gender}
+    input = pd.DataFrame(data, index=[0])
+    input_penguins = pd.concat([input_df, X], axis=0)
+
+    # Encode 
+    encode = ['island','sex']
+    df_penguins = pd.get_dummies(input_penguins, prefix=encode)
+    input_row = df_penguins[:1]
+
+with st.expander('Input Features'):
+    st.write('**Input Penguins**')
+    input_df
+    st.write('**Combined penguins data**')
+    input_penguins
+    st.write('**Encoded input Penguin**')
+    input_row
