@@ -82,4 +82,39 @@ clf.fit(X, y)
 # Apply the train Model
 prediction = clf.predict(input_row)
 prediction_prob = clf.predict_proba(input_row)
-prediction_prob
+
+df_prediction_proba = pd.DataFrame(prediction_proba)
+df_prediction_proba.columns = ['Adelie','Chinstrap','Gentoo']
+df_prediction_prob.rename(columns={0:'Adelie',
+                                1:'Chinstrap',
+                                2:'Gentoo'})
+
+# Display Predicted species
+
+st.subheader('Predicted Species')
+st.dataframe(df_prediction_proba,column_config={
+    'Adelie': st.column_config.ProgressColumn(
+        'Adelie',
+        format='%f',
+        width='medium',
+        min_value=0,
+        max_value=1
+    ),
+     'Chinstrap': st.column_config.ProgressColumn(
+        'Chinstrap',
+        format='%f',
+        width='medium',
+        min_value=0,
+        max_value=1
+    ),
+     'Gentoo': st.column_config.ProgressColumn(
+        'Gentoo',
+        format='%f',
+        width='medium',
+        min_value=0,
+        max_value=1
+    )
+}, hide_index=True)
+
+penguins_species = np.array(['Adelie','Chinstrap','Gentoo'])
+st.success(str(penguins_species[prediction][0]))
