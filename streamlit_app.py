@@ -42,19 +42,23 @@ with st.sidebar:
            'sex':gender}
     input_df = pd.DataFrame(data, index=[0])
     input_penguins = pd.concat([input_df, X_row], axis=0)
-    
-# Data Preparation
-
-# Encode X
-encode = ['island','sex']
-df_penguins = pd.get_dummies(input_penguins, prefix=encode)
-input_row = df_penguins[:1]
 
 with st.expander('Input Features'):
     st.write('**Input Penguins**')
     input_df
     st.write('**Combined penguins data**')
     input_penguins
+# Data Preparation
+
+# Encode X
+encode = ['island','sex']
+df_penguins = pd.get_dummies(input_penguins, prefix=encode)
+
+X = df_penguin[1:]
+input_row = df_penguins[:1]
+
+
+    
 # Encode Y
 target_mapper = {'Adelie': 0,
                 'Chinstrap': 1,
@@ -73,7 +77,7 @@ with st.expander('Data Preparation'):
 
 # Model Building
 clf = RandomForestClassifier()
-clf.fit(X_row, y)
+clf.fit(X, y)
 
 # Apply the train Model
 prediction = clf.predict(input_row)
